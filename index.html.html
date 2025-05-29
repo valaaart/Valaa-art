@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>متجري الفاخر</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #FAFAFA;
+    color: #000;
+  }
+  header {
+    background-color: #E0F7FA;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  header h1 {
+    margin: 0;
+    font-size: 2rem;
+  }
+  nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+  }
+  nav a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 600;
+    transition: color 0.3s;
+  }
+  nav a:hover {
+    color: #007BFF;
+  }
+
+  /* الأقسام */
+section {
+  padding: 40px 20px;
+}
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+/* عرض المنتجات */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+.product-card {
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.product-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.product-title {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  text-align: center;
+}
+.product-price {
+  color: #007BFF;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 5px;
+}
+button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+button:hover {
+  background-color: #0056b3;
+}
+
+/* سلة المشتريات */
+#cart {
+  max-width: 800px;
+  margin: auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+}
+#cart table {
+  width: 100%;
+  border-collapse: collapse;
+}
+#cart th, #cart td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+#cart th {
+  background-color: #f0f0f0;
+}
+#cart-total {
+  text-align: right;
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>متجري الفاخر</h1>
+  <nav>
+    <a href="#products">المنتجات</a>
+    <a href="#cart">السلة</a>
+    <a href="#contact">اتصل بنا</a>
+    <a href="#payment">الدفع</a>
+  </nav>
+</header>
+
+<!-- المنتجات -->
+<section id="products">
+  <h2>منتجاتنا</h2>
+  <div class="products">
+    <div class="product-card" data-name="لوحة زيتية 1" data-price="130">
+      <img src="https://via.placeholder.com/400x300?text=لوحة+زيتية+1" class="product-image" />
+      <div class="product-title">لوحة زيتية 1</div>
+      <div class="product-price">130 دولار</div>
+      <button onclick="اضف_إلى_السلة(this)">إضافة إلى السلة</button>
+    </div>
+    
+    <div class="product-card" data-name="لوحة زيتية 2" data-price="140">
+      <img src="https://via.placeholder.com/400x300?text=لوحة+زيتية+2" class="product-image" />
+      <div class="product-title">لوحة زيتية 2</div>
+      <div class="product-price">140 دولار</div>
+      <button onclick="اضف_إلى_السلة(this)">إضافة إلى السلة</button>
+    </div>
+    
+    <div class="product-card" data-name="لوحة زيتية 3" data-price="150">
+      <img src="https://via.placeholder.com/400x300?text=لوحة+زيتية+3" class="product-image" />
+      <div class="product-title">لوحة زيتية 3</div>
+      <div class="product-price">150 دولار</div>
+      <button onclick="اضف_إلى_السلة(this)">إضافة إلى السلة</button>
+    </div>
+    
+    <div class="product-card" data-name="لوحة زيتية 4" data-price="160">
+      <img src="https://via.placeholder.com/400x300?text=لوحة+زيتية+4" class="product-image" />
+      <div class="product-title">لوحة زيتية 4</div>
+      <div class="product-price">160 دولار</div>
+      <button onclick="اضف_إلى_السلة(this)">إضافة إلى السلة</button>
+    </div>
+    
+    <div class="product-card" data-name="لوحة زيتية 5" data-price="170">
+      <img src="https://via.placeholder.com/400x300?text=لوحة+زيتية+5" class="product-image" />
+      <div class="product-title">لوحة زيتية 5</div>
+      <div class="product-price">170 دولار</div>
+      <button onclick="اضف_إلى_السلة(this)">إضافة إلى السلة</button>
+    </div>
+    
+    <div class="product-card" data-name="لوحة زيتية 6" data-price="180">
+      <img src="https://via.placeholder.com/400x300?text=لوحة+زيتية+6" class="product-image" />
+      <div class="product-title">لوحة زيتية 6</div>
+      <div class="product-price">180 دولار</div>
+      <button onclick="اضف_إلى_السلة(this)">إضافة إلى السلة</button>
+    </div>
+    
+    <div class="product-card" data-name="لوحة زيتية 7" data-price="190">
+      <img src="https://via.placeholder.com/400x300?text=لوحة+زيتية+7" class="product-image" />
+      <div class="product-title">لوحة زيتية 7</div>
+      <div class="product-price">190 دولار</div>
+      <button onclick="اضف_إلى_السلة(this)">إضافة إلى السلة</button>
+    </div>
+    
+    <div class="product-card" data-name="لوحة زيتية 8" data-price="200">
+      <img src="https://via.placeholder.com/400x300?text=لوحة+زيتية+8" class="product-image" />
+      <div class="product-title">لوحة زيتية 8</div>
+      <div class="product-price">200 دولار</div>
+      <button onclick="اضف_إلى_السلة(this)">إضافة إلى السلة</button>
+    </div>
+    
+    <div class="product-card" data-name="لوحة زيتية 9" data-price="210">
+      <img src="https://via.placeholder.com/400x300?text=لوحة+زيتية+9" class="product-image" />
+      <div class="product-title">لوحة زيتية 9</div>
+      <div class="product-price">210 دولار</div>
+      <button onclick="اضف_إلى_السلة(this)">إضافة إلى السلة</button>
+    </div>
+    
+    <div class="product-card" data-name="لوحة زيتية 10" data-price="220">
+      <img src="https://via.placeholder.com/400x300?text=لوحة+زيتية+10" class="product-image" />
+      <div class="product-title">لوحة زيتية 10</div>
+      <div class="product-price">220 دولار</div>
+      <button onclick="اضف_إلى_السلة(this)">إضافة إلى السلة</button>
+    </div>
+    
+    <div class="product-card" data-name="قطعة فاخرة 1" data-price="200">
+      <img src="https://via.placeholder.com/400x300?text=القطعة+1" class="product-image" />
+      <div class="product-title">قطعة فاخرة 1</div>
+      <div class="product-price">200 ريال</div>
+      <button onclick="اضف_إلى_السلة(this)">إضافة إلى السلة</button>
+    </div>
+    <div class="product-card" data-name="قطعة فاخرة 2" data-price="350">
+      <img src="https://via.placeholder.com/400x300?text=القطعة+2" class="product-image" />
+      <div class="product-title">قطعة فاخرة 2</div>
+      <div class="product-price">350 ريال</div>
+      <button onclick="اضف_إلى_السلة(this)">إضافة إلى السلة</button>
+    </div>
+    <div class="product-card" data-name="قطعة فاخرة 3" data-price="150">
+      <img src="https://via.placeholder.com/400x300?text=القطعة+3" class="product-image" />
+      <div class="product-title">قطعة فاخرة 3</div>
+      <div class="product-price">150 ريال</div>
+      <button onclick="اضف_إلى_السلة(this)">إضافة إلى السلة</button>
+    </div>
+  </div>
+</section>
+
+<!-- سلة المشتريات -->
+<section id="cart">
+  <h2>سلة المشتريات</h2>
+  <table id="cart-table">
+    <thead>
+      <tr>
+        <th>المنتج</th>
+        <th>السعر</th>
+        <th>الكمية</th>
+        <th>إجمالي</th>
+        <th>حذف</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <div id="cart-total">المجموع: 0 ريال</div>
+  <button onclick="فتح صفحة الدفع()">الدفع الآن</button>
+</section>
+
+<!-- اتصل بنا -->
+<section id="contact">
+  <h2>اتصل بنا</h2>
+  <form id="contactForm" onsubmit="return ارسال_الرسالة()">
+    <label>الاسم</label>
+    <input type="text" id="name" required />
+    <label>البريد الإلكتروني</label>
+    <input type="email" id="email" required />
+    <label>الرسالة</label>
+    <textarea id="message" rows="4" required></textarea>
+    <button type="submit">إرسال</button>
+  </form>
+</section>
+
+<!-- صفحة الدفع -->
+<section id="payment" style="display:none;">
+  <h2>طرق الدفع</h2>
+  <p>اختر طريقة الدفع المناسبة:</p>
+  <button onclick="نموذج_الدفع()">ادفع بواسطة فيزا / ماستركارد</button>
+  <button onclick="نموذج_بايبال()">ادفع بواسطة بايبال</button>
+</section>
+
+<!-- نموذج الدفع (مبدئي، يمكن تطويره لاحقًا) -->
+<section id="payment-form" style="display:none; max-width:600px; margin:auto; padding:20px; background:#fff; border-radius:10px;">
+  <h2>نموذج الدفع</h2>
+  <form id="paymentForm" onsubmit="return إتمام_الدفع()">
+    <label>اسم صاحب البطاقة</label>
+    <input type="text" id="cardName" required />
+    <label>رقم البطاقة</label>
+    <input type="text" id="cardNumber" required />
+    <label>تاريخ الانتهاء</label>
+    <input type="text" placeholder="MM/YY" id="cardExpiry" required />
+    <label>CVV</label>
+    <input type="text" id="cardCVV" required />
+    <button type="submit">إتمام الدفع</button>
+  </form>
+</section>
+
+<script>
+  let سلة_المشتريات = [];
+
+  // وظيفة إضافة منتج إلى السلة
+  function اضف_إلى_السلة(btn) {
+    const المنتج = btn.closest('.product-card');
+    const الاسم = المنتج.dataset.name;
+    const السعر = parseFloat(المنتج.dataset.price);
+    // تحقق هل المنتج موجود مسبقًا
+    const موجود = سلة_المشتريات.find(item => item.name === الاسم);
+    if (موجود) {
+      موجود.quantity++;
+    } else {
+      سلة_المشتريات.push({ name: الاسم, price: السعر, quantity: 1 });
+    }
+    تحديث_السلة();
+  }
+
+  // تحديث محتوى السلة
+  function تحديث_السلة() {
+    const tbody = document.querySelector('#cart-table tbody');
+    tbody.innerHTML = '';
+    let المجموع = 0;
+    سلة_المشتريات.forEach((item, index) => {
+      const إجمالي_السعر = item.price * item.quantity;
+      المجموع += إجمالي_السعر;
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${item.name}</td>
+        <td>${item.price} ريال</td>
+        <td>
+          <button onclick="تعديل_الكمية(${index}, -1)">-</button>
+          ${item.quantity}
+          <button onclick="تعديل_الكمية(${index}, 1)">+</button>
+        </td>
+        <td>${إجمالي_السعر} ريال</td>
+        <td><button onclick="حذف_منتج(${index})">حذف</button></td>
+      `;
+      tbody.appendChild(row);
+    });
+    document.getElementById('cart-total').innerText = `المجموع: ${المجموع} ريال`;
+  }
+
+  // تعديل كمية المنتج
+  function تعديل_الكمية(index, التغيير) {
+    سلة_المشتريات[index].quantity += التغيير;
+    if (سلة_المشتريات[index].quantity <= 0) {
+      حذف_منتج(index);
+    }
+    تحديث_السلة();
+  }
+
+  // حذف منتج
+  function حذف_منتج(index) {
+    سلة_المشتريات.splice(index, 1);
+    تحديث_السلة();
+  }
+
+  // فتح صفحة الدفع
+  function فتح صفحة الدفع() {
+    if (سلة_المشتريات.length === 0) {
+      alert('السلة فارغة!');
+      return;
+    }
+    document.querySelector('#payment').style.display = 'block';
+    document.querySelector('#payment-form').style.display = 'none';
+  }
+
+  // اختيار الدفع ببطاقة الائتمان
+  function نموذج_الدفع() {
+    document.querySelector('#payment').style.display = 'none';
+    document.querySelector('#payment-form').style.display = 'block';
+  }
+
+  // اختيار بايبال
+  function نموذج_بايبال() {
+    alert('سيتم توجيهك إلى صفحة بايبال للدفع (نموذج تجريبي)');
+    // هنا يمكنك إضافة رابط حقيقي لصفحة بايبال أو بوابة دفع
+  }
+
+  // إتمام الدفع (نموذج تجريبي)
+  function إتمام_الدفع() {
+    alert('تم الدفع بنجاح! شكراً لشراءك.');
+    // يمكنك هنا ربط API لبوابة الدفع أو إتمام العملية
+    // إعادة تعيين السلة
+    سلة_المشتريات = [];
+    تحديث_السلة();
+    document.querySelector('#payment-form').style.display = 'none';
+    document.querySelector('#payment').style.display = 'none';
+    return false;
+  }
+
+  // إرسال رسالة الاتصال
+  function ارسال_الرسالة() {
+    alert('تم استلام رسالتك! سنرد عليك قريبًا.');
+    document.getElementById('contactForm').reset();
+    return false;
+  }
+</script>
+
+</body>
+</html>
